@@ -17,7 +17,7 @@ DISTFILES += qml/harbour-evento.qml \
     qml/dialogs/EditEventDialog.qml \
     qml/pages/MainPage.qml \
     qml/pages/AboutPage.qml \
-    rpm/harbour-evento.changes.in \
+    rpm/harbour-evento.changes \
     rpm/harbour-evento.changes.run.in \
     rpm/harbour-evento.spec \
     rpm/harbour-evento.yaml \
