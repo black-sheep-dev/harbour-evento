@@ -95,10 +95,6 @@
         <source>Failed to load events</source>
         <translation>Laden der Events fehlgeschlagen</translation>
     </message>
-    <message id="Deleting event">
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
     <message id="id-days-unit">
         <source>d</source>
         <extracomment>&quot;Unit of days&quot;</extracomment>
