@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=harbour-evento
+Exec=harbour-evento
+Name=Evento
+
+[X-Sailjail]
+# Replace with your organization as a reverse domain name
+OrganizationName=org.nubecula
+# ApplicationName does not have to be identical to Name
+ApplicationName=evento
+# Add the required permissions here
+Permissions=
