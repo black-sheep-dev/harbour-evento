@@ -39,7 +39,9 @@ Sailfish OS app to count remaining days to defined events
       Repo: https://github.com/black-sheep-dev/harbour-evento/
   Icon: https://raw.githubusercontent.com/black-sheep-dev/harbour-evento/master/icons/172x172/harbour-evento.png
   Screenshots:
-      - https://github.com/black-sheep-dev/harbour-evento/raw/master/metadata/screenshot1.png
+      - https://github.com/black-sheep-dev/harbour-evento/raw/master/metadata/screenshot01.png
+      - https://github.com/black-sheep-dev/harbour-evento/raw/master/metadata/screenshot02.png
+      - https://github.com/black-sheep-dev/harbour-evento/raw/master/metadata/screenshot03.png
   Url:
       Donation: https://www.paypal.com/paypalme/nubecula/1
   %endif
