@@ -114,9 +114,11 @@ Page {
                 font.pixelSize: Theme.fontSizeExtraLarge
                 font.bold: true
 
-                //: "Unit of days"
-                //% "d"
-                text: (model.remaining > 0 ? model.remaining : 0)+ " " + qsTrId("id-days-unit")
+
+                text: (model.remaining > 0 ? model.remaining : 0)+ " "
+                        //: "Unit of days"
+                        //% "d"
+                      + qsTrId("id-days-unit")
             }
         }
         VerticalScrollDecorator {}

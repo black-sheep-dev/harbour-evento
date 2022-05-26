@@ -1,8 +1,7 @@
-#ifdef QT_QML_DEBUG
 #include <QtQuick>
-#endif
 
 #include <sailfishapp.h>
+#include <QGuiApplication>
 
 #include "eventsmodel.h"
 #include "sortfiltermodel.h"
