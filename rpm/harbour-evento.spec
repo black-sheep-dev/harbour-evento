@@ -30,7 +30,7 @@ BuildRequires:  desktop-file-utils
 Sailfish OS app to count remaining days to defined events
 
   %if "%{?vendor}" == "chum"
-  PackageName: Aenigma
+  PackageName: Evento
   Type: desktop-application
   Categories:
       - Utils
