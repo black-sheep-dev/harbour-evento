@@ -1,5 +1,5 @@
 # Evento
-Sailfish OS app to count remaining days to defined events
+Sailfish OS app to count remaining days to defined events.
 
 >![](icons/128x128/harbour-evento.png)
 
