@@ -1,3 +1,8 @@
+* Fri May 27 2022 Samuel Kron <blacksheep@nubecula.org> 0.1.2-1
+- Add sorting capabilities
+- Sorting on cover too
+- Bugfixes
+
 * Thu May 26 2022 Samuel Kron <blacksheep@nubecula.org> 0.1.1-1
 - Fixed typo in metadata
 

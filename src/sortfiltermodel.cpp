@@ -11,5 +11,15 @@ SortFilterModel::SortFilterModel(QObject *parent) :
 
 void SortFilterModel::sortModel()
 {
-    sort(0, sortOrder());
+    sort(0, m_sortOrder);
+}
+
+
+void SortFilterModel::setSortOrder(Qt::SortOrder order)
+{
+    if (m_sortOrder == order) {
+        return;
+    }
+    m_sortOrder = order;
+    sortModel();
 }

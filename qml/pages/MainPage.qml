@@ -17,6 +17,13 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
+                //% "Sorting"
+                text: qsTrId("id-sorting")
+                onClicked: {
+                    var dialog = pageStack.push(Qt.resolvedUrl("../dialogs/SortingDialog.qml"))
+                }
+            }
+            MenuItem {
                 //% "Add"
                 text: qsTrId("id-add")
                 onClicked: {
@@ -39,10 +46,7 @@ Page {
             //% "Eventlist"
             title: qsTrId("id-main-title")
         }
-        model: SortFilterModel {
-            id: sortFilterModel
-            sourceModel: Events
-        }
+        model: sortFilterModel
 
         delegate: ListItem {
             id: delegate
@@ -136,4 +140,6 @@ Page {
         load()
         sortFilterModel.sortModel()
     }
+
+    onVisibleChanged: Events.refresh()
 }

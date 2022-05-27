@@ -24,6 +24,11 @@ CoverBackground {
 
     id: coverBackground
 
+    Connections {
+        target: Events
+        onChanged: currentIndex = 0
+    }
+
     Label {
         id: titleLabel
         anchors {
@@ -61,7 +66,7 @@ CoverBackground {
         }
 
         Repeater {
-            model: Events
+            model: sortFilterModel
 
             Item {
                 width: coverBackground.width
@@ -112,4 +117,6 @@ CoverBackground {
 
 
     }
+
+    onVisibleChanged: Events.refresh()
 }

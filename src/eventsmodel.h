@@ -30,10 +30,15 @@ public slots:
     void addEvent(const QString &title, const QDateTime &date);
     void clear();
     void removeEvent(int index);
+    void refresh();
 
     // save & load
     bool load();
     bool save();
+
+signals:
+    void changed();
+
 
 private:
     QList<Event> m_events;

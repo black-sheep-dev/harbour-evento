@@ -1,5 +1,5 @@
 # VERSION
-VERSION = 0.1.1
+VERSION = 0.1.2
 DEFINES += APP_VERSION=\\\"$$VERSION\\\"
 
 TARGET = harbour-evento
@@ -15,6 +15,7 @@ SOURCES += src/harbour-evento.cpp \
 DISTFILES += qml/harbour-evento.qml \
     qml/cover/CoverPage.qml \
     qml/dialogs/EditEventDialog.qml \
+    qml/dialogs/SortingDialog.qml \
     qml/pages/MainPage.qml \
     qml/pages/AboutPage.qml \
     rpm/harbour-evento.changes \

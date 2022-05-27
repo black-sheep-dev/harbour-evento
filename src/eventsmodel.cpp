@@ -26,6 +26,7 @@ void EventsModel::addEvent(const QString &title, const QDateTime &date)
     beginInsertRows(QModelIndex(), m_events.count(), m_events.count());
     m_events.append(event);
     endInsertRows();
+    emit changed();
 }
 
 void EventsModel::clear()
@@ -33,6 +34,7 @@ void EventsModel::clear()
     beginResetModel();
     m_events.clear();
     endResetModel();
+    emit changed();
 }
 
 void EventsModel::removeEvent(int index)
@@ -43,6 +45,12 @@ void EventsModel::removeEvent(int index)
     beginRemoveRows(QModelIndex(), index, index);
     m_events.removeAt(index);
     endRemoveRows();
+    emit changed();
+}
+
+void EventsModel::refresh()
+{
+    emit dataChanged(index(0), index(m_events.count() - 1), QVector<int>() << RemainingRole);
 }
 
 bool EventsModel::load()
@@ -80,6 +88,8 @@ bool EventsModel::load()
         m_events.append(event);
     }
     endResetModel();
+
+    emit changed();
 
     return true;
 }

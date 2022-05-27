@@ -104,5 +104,45 @@
         <extracomment>&quot;Unit of days&quot;</extracomment>
         <translation>d</translation>
     </message>
+    <message id="id-sort-dialog-title">
+        <source>Change sorting</source>
+        <translation>Change sorting</translation>
+    </message>
+    <message id="id-sort">
+        <source>Sort</source>
+        <translation>Sort</translation>
+    </message>
+    <message id="id-sort-by">
+        <source>Sort by</source>
+        <translation>Sort by</translation>
+    </message>
+    <message id="id-days-left">
+        <source>Days left</source>
+        <translation>Days left</translation>
+    </message>
+    <message id="id-date">
+        <source>Date</source>
+        <translation>Date</translation>
+    </message>
+    <message id="id-date-added">
+        <source>Date added</source>
+        <translation>Date added</translation>
+    </message>
+    <message id="id-sort-order">
+        <source>Sort order</source>
+        <translation>Sort order</translation>
+    </message>
+    <message id="id-ascending">
+        <source>Ascending</source>
+        <translation>Ascending</translation>
+    </message>
+    <message id="id-descending">
+        <source>Descending</source>
+        <translation>Descending</translation>
+    </message>
+    <message id="id-sorting">
+        <source>Sorting</source>
+        <translation>Sorting</translation>
+    </message>
 </context>
 </TS>
