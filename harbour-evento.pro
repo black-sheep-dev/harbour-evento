@@ -32,7 +32,10 @@ include(translations/translations.pri)
 icons.files = icons/*.svg
 icons.path = $$INSTALL_ROOT/usr/share/harbour-evento/icons
 
-INSTALLS += icons
+images.files = images/*.svg
+images.path = $$INSTALL_ROOT/usr/share/harbour-evento/images
+
+INSTALLS += icons images
 
 HEADERS += \
     src/eventsmodel.h \

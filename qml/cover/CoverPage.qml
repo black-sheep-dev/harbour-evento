@@ -29,37 +29,23 @@ CoverBackground {
         onChanged: currentIndex = 0
     }
 
-    Label {
-        id: titleLabel
-        anchors {
-            top: parent.top
-            topMargin: Theme.paddingLarge
-            horizontalCenter: parent.horizontalCenter
-        }
-        font.pixelSize: Theme.fontSizeLarge
-        //% "Evento"
-        text: qsTrId("id-app-name")
-    }
-    Separator {
-        anchors {
-            top: titleLabel.bottom
-            topMargin: Theme.paddingMedium
-        }
-        x: Theme.horizontalPageMargin
-        width: parent.width - 2*x
-        color: Theme.primaryColor
+    Image {
+        anchors.fill: parent
+        height: sourceSize.height * width / sourceSize.width
+        fillMode: Image.PreserveAspectCrop
+        smooth: true
+        source: "/usr/share/harbour-evento/images/cover-background.svg"
+        opacity: 0.1
     }
 
     Row {
         anchors {
-            top: titleLabel.bottom
-            topMargin: Theme.paddingLarge
-            bottom: coverAction.top
-            bottomMargin: Theme.paddingLarge
+            top: parent.top
+            topMargin: Theme.paddingLarge 
         }
 
         x: currentIndex * parent.width * -1
-        height: parent.height - titleLabel.height - 256
+        height: coverBackground.height - 256
 
         Behavior on x {
             NumberAnimation { duration: currentIndex === (Events.rowCount() - 1) ? 0 : 250 }
@@ -76,7 +62,6 @@ CoverBackground {
                     x: Theme.horizontalPageMargin
                     width: parent.width - 2*x
                     text: model.title
-                    font.bold: true
                     wrapMode: Text.WordWrap
                     horizontalAlignment: Text.AlignHCenter
                 }
