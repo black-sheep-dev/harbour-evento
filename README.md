@@ -3,6 +3,8 @@ Sailfish OS app to count remaining days to defined events.
 
 >![](icons/128x128/harbour-evento.png)
 
+![](https://www.codefactor.io/repository/github/black-sheep-dev/harbour-evento/badge?style=plastic)
+
 [![](https://github.com/black-sheep-dev/harbour-evento/actions/workflows/main.yml/badge.svg)](https://github.com/black-sheep-dev/harbour-evento/actions/workflows/main.yml)
 
 ![](http://weblate.nubecula.org/widgets/harbour-evento/-/harbour-evento/svg-badge.svg)
