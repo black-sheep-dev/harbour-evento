@@ -1,6 +1,6 @@
 Name: harbour-evento
 Summary: Evento
-Version: 0.1.3
+Version: 0.1.4
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
@@ -18,7 +18,7 @@ Description: |
     PackageName: Evento
     Type: desktop-application
     Categories:
-        - Utils
+        - Utility
     Custom:
         DescriptionMD: https://github.com/black-sheep-dev/harbour-evento/raw/master/README.md
         Repo: https://github.com/black-sheep-dev/harbour-evento/

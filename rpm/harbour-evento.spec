@@ -9,7 +9,7 @@ Name:       harbour-evento
 # << macros
 
 Summary:    Evento
-Version:    0.1.3
+Version:    0.1.4
 Release:    1
 Group:      Qt/Qt
 License:    GPLv2
@@ -33,7 +33,7 @@ Sailfish OS app to count remaining days to defined events
   PackageName: Evento
   Type: desktop-application
   Categories:
-      - Utils
+      - Utility
   Custom:
       DescriptionMD: https://github.com/black-sheep-dev/harbour-evento/raw/master/README.md
       Repo: https://github.com/black-sheep-dev/harbour-evento/
