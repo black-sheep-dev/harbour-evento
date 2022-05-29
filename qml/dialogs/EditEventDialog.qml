@@ -8,7 +8,7 @@ Dialog {
 
     id: dialog
 
-    canAccept: titleField.text.length > 0 && new Date().getTime() < datePicker.date.getTime()
+    canAccept: titleField.text.length > 0
 
     Column {
         width: parent.width

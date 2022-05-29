@@ -144,5 +144,15 @@
         <source>Sorting</source>
         <translation>Sorting</translation>
     </message>
+    <message id="id-days-until">
+        <source>Days until</source>
+        <oldsource>Day(s) until</oldsource>
+        <translation>Days until</translation>
+    </message>
+    <message id="id-day-since">
+        <source>Days since</source>
+        <oldsource>Day(s) since</oldsource>
+        <translation>Days since</translation>
+    </message>
 </context>
 </TS>

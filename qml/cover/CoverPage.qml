@@ -68,13 +68,28 @@ CoverBackground {
 
                 Label {
                     anchors {
+                        bottom: daysCounter.top
+                        bottomMargin: Theme.paddingMedium
+                        horizontalCenter: parent.horizontalCenter
+                    }
+                    font.pixelSize: Theme.fontSizeTiny
+                    text: model.remaining > 0 ?
+                              //% "Days until"
+                              qsTrId("id-days-until") :
+                              //% "Days since"
+                              qsTrId("id-day-since")
+                }
+
+                Label {
+                    id: daysCounter
+                    anchors {
                         horizontalCenter: parent.horizontalCenter
                         bottom: parent.bottom
                     }
 
                     //: "Unit of days"
                     //% "d"
-                    text: (model.remaining > 0 ? model.remaining : 0)+ " " + qsTrId("id-days-unit")
+                    text: Math.abs(model.remaining) + " " + qsTrId("id-days-unit")
                     font.pixelSize: Theme.fontSizeExtraLarge
                     font.bold: true
                 }

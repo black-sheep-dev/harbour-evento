@@ -80,17 +80,21 @@ Page {
                 }
             }
 
-            contentHeight: lablesColumn.height + 2*Theme.paddingMedium
+            contentHeight: contentColumn.height + topSeparator.height + 2*Theme.paddingMedium
 
-            Column {
-                id: lablesColumn
-                anchors {
-                    left: parent.left
-                    leftMargin: Theme.horizontalPageMargin
-                    verticalCenter: parent.verticalCenter
-                    right: counterLabel.left
-                    rightMargin: Theme.paddingMedium
-                }
+            Separator {
+                id: topSeparator
+                visible: index > 0
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
+                color: Theme.primaryColor
+            }
+
+            Column {              
+                id: contentColumn
+                anchors.verticalCenter: parent.verticalCenter
+                x: Theme.horizontalPageMargin
+                width: parent.width - 2*x
 
                 spacing: Theme.paddingMedium
 
@@ -106,23 +110,37 @@ Page {
                     color: delegate.highlighted ? Theme.highlightColor : Theme.secondaryColor
                     font.pixelSize: Theme.fontSizeExtraSmall
                 }
-            }
 
-            Label {
-                id: counterLabel
-                anchors {
-                    right: parent.right
-                    rightMargin: Theme.horizontalPageMargin
-                    verticalCenter: parent.verticalCenter
+                Item {
+                    width: parent.width
+                    height: daysLabel.height + 2*Theme.paddingSmall
+
+                    Label {
+                        anchors {
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
+                        }
+                        text: model.remaining > 0 ?
+                                  //% "Days until"
+                                  qsTrId("id-days-until") :
+                                  //% "Days since"
+                                  qsTrId("id-day-since")
+                    }
+
+                    Label {
+                        id: daysLabel
+                        anchors {
+                            right: parent.right
+                            verticalCenter: parent.verticalCenter
+                        }
+                        font.pixelSize: Theme.fontSizeExtraLarge
+                        font.bold: true
+                        text: Math.abs(model.remaining) + " "
+                            //: "Unit of days"
+                            //% "d"
+                            + qsTrId("id-days-unit")
+                    }
                 }
-                font.pixelSize: Theme.fontSizeExtraLarge
-                font.bold: true
-
-
-                text: (model.remaining > 0 ? model.remaining : 0)+ " "
-                        //: "Unit of days"
-                        //% "d"
-                      + qsTrId("id-days-unit")
             }
         }
         VerticalScrollDecorator {}

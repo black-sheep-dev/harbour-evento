@@ -140,5 +140,19 @@
         <source>Sorting</source>
         <translation>Sortierung</translation>
     </message>
+    <message id="id-days-until">
+        <source>Days until</source>
+        <oldsource>Day(s) until</oldsource>
+        <translation>Tage bis</translation>
+    </message>
+    <message id="id-day-since">
+        <source>Days since</source>
+        <oldsource>Day(s) since</oldsource>
+        <translation>Tage seit</translation>
+    </message>
+    <message id="Deleting event">
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
