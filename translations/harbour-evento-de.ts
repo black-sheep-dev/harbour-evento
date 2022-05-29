@@ -150,9 +150,5 @@
         <oldsource>Day(s) since</oldsource>
         <translation>Tage seit</translation>
     </message>
-    <message id="Deleting event">
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 </TS>
