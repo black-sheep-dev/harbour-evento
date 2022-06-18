@@ -150,5 +150,29 @@
         <oldsource>Day(s) since</oldsource>
         <translation>Tage seit</translation>
     </message>
+    <message id="id-repeat">
+        <source>Repeat</source>
+        <translation>Wiederholen</translation>
+    </message>
+    <message id="id-never">
+        <source>never</source>
+        <translation>niemals</translation>
+    </message>
+    <message id="id-weekly">
+        <source>weekly</source>
+        <translation>wöchentlich</translation>
+    </message>
+    <message id="id-monthly">
+        <source>monthly</source>
+        <translation>monatlisch</translation>
+    </message>
+    <message id="id-yearly">
+        <source>yearly</source>
+        <translation>jährlich</translation>
+    </message>
+    <message id="Deleting event">
+        <source></source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>

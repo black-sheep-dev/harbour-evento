@@ -154,5 +154,25 @@
         <oldsource>Day(s) since</oldsource>
         <translation>Days since</translation>
     </message>
+    <message id="id-repeat">
+        <source>Repeat</source>
+        <translation>Repeat</translation>
+    </message>
+    <message id="id-never">
+        <source>never</source>
+        <translation>never</translation>
+    </message>
+    <message id="id-weekly">
+        <source>weekly</source>
+        <translation>weekly</translation>
+    </message>
+    <message id="id-monthly">
+        <source>monthly</source>
+        <translation>monthly</translation>
+    </message>
+    <message id="id-yearly">
+        <source>yearly</source>
+        <translation>yearly</translation>
+    </message>
 </context>
 </TS>

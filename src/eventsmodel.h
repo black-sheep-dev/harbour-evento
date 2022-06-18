@@ -9,6 +9,7 @@ struct Event {
     QDateTime created;
     QDateTime date;
     QString title;
+    quint8 repeat{0};
 };
 
 class EventsModel : public QAbstractListModel
@@ -20,14 +21,23 @@ public:
         CreatedRole,
         DateRole,
         IdRole,
-        RemainingRole
+        RemainingRole,
+        RepeatRole,
     };
     Q_ENUM(EventRoles)
+
+    enum Repeat {
+        RepeatNever,
+        RepeatWeekly,
+        RepeatMonthly,
+        RepeatYearly
+    };
+    Q_ENUM(Repeat)
 
     explicit EventsModel(QObject *parent = nullptr);
 
 public slots:
-    void addEvent(const QString &title, const QDateTime &date);
+    void addEvent(const QString &title, const QDateTime &date, quint8 repeat = 0);
     void clear();
     void removeEvent(int index);
     void refresh();

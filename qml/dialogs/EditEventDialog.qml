@@ -3,6 +3,7 @@ import Sailfish.Silica 1.0
 
 Dialog {
     property date datetime: new Date()
+    property int repeat: 0
     property alias title: titleField.text
     property bool edit: false
 
@@ -40,6 +41,32 @@ Dialog {
             focus: true
         }
 
+        ComboBox {
+            id: repeatComboBox
+            //% "Repeat"
+            label: qsTrId("id-repeat")
+            menu: ContextMenu {
+                MenuItem {
+                    //% "never"
+                    text: qsTrId("id-never")
+                }
+                MenuItem {
+                    //% "weekly"
+                    text: qsTrId("id-weekly")
+                }
+                MenuItem {
+                    //% "monthly"
+                    text: qsTrId("id-monthly")
+                }
+                MenuItem {
+                    //% "yearly"
+                    text: qsTrId("id-yearly")
+                }
+            }
+
+            currentIndex: repeat
+        }
+
         DatePicker {
             id: datePicker
             x: Theme.horizontalPageMargin
@@ -55,6 +82,7 @@ Dialog {
     onDone: {
         if (result == DialogResult.Accepted) {
             datetime = datePicker.date
+            repeat = repeatComboBox.currentIndex
         }
     }
 }

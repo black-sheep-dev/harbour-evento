@@ -1,7 +1,7 @@
 #include "eventsmodel.h"
 
 #define     EVENTO_FILE_MAGIC       0x4556454e544f  // EVENTO
-#define     EVENTO_FILE_VERSION     1
+#define     EVENTO_FILE_VERSION     2               // don't use 79
 
 #include <QDataStream>
 #include <QDir>
@@ -16,12 +16,13 @@ EventsModel::EventsModel(QObject *parent) :
     QDir().mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
 }
 
-void EventsModel::addEvent(const QString &title, const QDateTime &date)
+void EventsModel::addEvent(const QString &title, const QDateTime &date, quint8 repeat)
 {
     Event event;
     event.title = title;
     event.date = date;
     event.created = QDateTime::currentDateTime();
+    event.repeat = repeat;
 
     beginInsertRows(QModelIndex(), m_events.count(), m_events.count());
     m_events.append(event);
@@ -50,7 +51,29 @@ void EventsModel::removeEvent(int index)
 
 void EventsModel::refresh()
 {
-    emit dataChanged(index(0), index(m_events.count() - 1), QVector<int>() << RemainingRole);
+    for (auto &event : m_events) {
+        if (event.date > QDateTime::currentDateTime()) {
+            continue;
+        }
+
+        switch (event.repeat) {
+        case RepeatWeekly:
+            event.date = event.date.addDays(7);
+            break;
+
+        case RepeatMonthly:
+            event.date = event.date.addMonths(1);
+            break;
+
+        case RepeatYearly:
+            event.date =event.date.addYears(1);
+            break;
+
+        default:
+            break;
+        }
+    }
+    emit dataChanged(index(0), index(m_events.count() - 1), QVector<int>() << RemainingRole << DateRole);
 }
 
 bool EventsModel::load()
@@ -74,6 +97,11 @@ bool EventsModel::load()
     quint8 version{0};
     in >> version;
 
+    // fixed bug initial release
+    if (version == 79) {
+        version = 1;
+    }
+
     int count{0};
     in >> count;
 
@@ -84,6 +112,10 @@ bool EventsModel::load()
         in >> event.title;
         in >> event.date;
         in >> event.created;
+
+        if (version > 1) {
+            in >> event.repeat;
+        }
 
         m_events.append(event);
     }
@@ -106,7 +138,7 @@ bool EventsModel::save()
     out.setVersion(QDataStream::Qt_5_6);
 
     out << quint64(EVENTO_FILE_MAGIC);
-    out << quint8(EVENTO_FILE_MAGIC);
+    out << quint8(EVENTO_FILE_VERSION);
 
     out << m_events.count();
 
@@ -114,6 +146,7 @@ bool EventsModel::save()
         out << event.title;
         out << event.date;
         out << event.created;
+        out << event.repeat;
     }
 
     file.close();
@@ -150,6 +183,9 @@ QVariant EventsModel::data(const QModelIndex &index, int role) const
     case IdRole:
         return index.row();
 
+    case RepeatRole:
+        return event.repeat;
+
     default:
         return QVariant();
     }
@@ -170,6 +206,9 @@ bool EventsModel::setData(const QModelIndex &index, const QVariant &value, int r
         m_events[index.row()].date = value.toDateTime();
         break;
 
+    case RepeatRole:
+        m_events[index.row()].repeat = value.toUInt();
+
     default:
         return false;
     }
@@ -186,6 +225,7 @@ QHash<int, QByteArray> EventsModel::roleNames() const
     roles[DateRole]         = "date";
     roles[IdRole]           = "id";
     roles[RemainingRole]    = "remaining";
+    roles[RepeatRole]       = "repeat";
     roles[TitleRole]        = "title";
 
     return roles;

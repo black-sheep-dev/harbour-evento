@@ -32,7 +32,7 @@ Page {
                                                 })
 
                     dialog.accepted.connect(function() {
-                        Events.addEvent(dialog.title, dialog.datetime)
+                        Events.addEvent(dialog.title, dialog.datetime, dialog.repetitive)
                         save()
                     })
                 }
@@ -68,12 +68,14 @@ Page {
                         var dialog = pageStack.push(Qt.resolvedUrl("../dialogs/EditEventDialog.qml"), {
                                                         edit: true,
                                                         title: model.title,
-                                                        datetime: model.date
+                                                        datetime: model.date,
+                                                        repeat: model.repeat
                                                     })
 
                         dialog.accepted.connect(function() {
                             model.title = dialog.title
                             model.date = dialog.datetime
+                            model.repetitive = dialog.repetitive
                             save()
                         })
                     }
@@ -109,6 +111,45 @@ Page {
                     wrapMode: Text.Wrap
                     color: delegate.highlighted ? Theme.highlightColor : Theme.secondaryColor
                     font.pixelSize: Theme.fontSizeExtraSmall
+                }
+
+                Item {
+                    visible: model.repeat > 0
+                    width: repeatIcon.width + repeatLabel.width + Theme.paddingMedium
+                    height: repeatLabel.height
+
+                    Icon {
+                        id: repeatIcon
+                        anchors.verticalCenter: parent.verticalCenter
+                        source: "image://theme/icon-s-retweet"
+                    }
+                    Label {
+                        id: repeatLabel
+                        anchors {
+                            left: repeatIcon.right
+                            leftMargin: Theme.paddingMedium
+                            verticalCenter: parent.verticalCenter
+                        }
+                        font.pixelSize: Theme.fontSizeSmall
+                        text: {
+                            switch (model.repeat) {
+                            case EventsModel.RepeatWeekly:
+                                //% "weekly"
+                                return qsTrId("id-weekly")
+
+                            case EventsModel.RepeatMonthly:
+                                //% "monthly"
+                                return qsTrId("id-monthly")
+
+                            case EventsModel.RepeatYearly:
+                                //% "weekly"
+                                return qsTrId("id-yearly")
+
+                            default:
+                                return ""
+                            }
+                        }
+                    }
                 }
 
                 Item {
