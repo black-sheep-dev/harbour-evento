@@ -32,7 +32,7 @@ Page {
                                                 })
 
                     dialog.accepted.connect(function() {
-                        Events.addEvent(dialog.title, dialog.datetime, dialog.repetitive)
+                        Events.addEvent(dialog.title, dialog.datetime, dialog.repeat)
                         save()
                     })
                 }
@@ -75,7 +75,7 @@ Page {
                         dialog.accepted.connect(function() {
                             model.title = dialog.title
                             model.date = dialog.datetime
-                            model.repetitive = dialog.repetitive
+                            model.repeat = dialog.repeat
                             save()
                         })
                     }
