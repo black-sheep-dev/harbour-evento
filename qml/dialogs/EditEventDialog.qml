@@ -64,25 +64,53 @@ Dialog {
                 }
             }
 
-            currentIndex: repeat
+            onCurrentIndexChanged: repeat = currentIndex
+
+            Component.onCompleted: currentIndex = repeat
         }
 
-        DatePicker {
-            id: datePicker
-            x: Theme.horizontalPageMargin
-            width: parent.width - 2*x
-            daysVisible: true
-            monthYearVisible: true
-            weeksVisible: true
-            date: datetime
+        BackgroundItem {
+            width: parent.width
+            height: selectLabel.height + 2*Theme.paddingMedium
 
+            Label {
+                id: selectLabel
+                anchors {
+                    left: parent.left
+                    leftMargin: Theme.horizontalPageMargin
+                    verticalCenter: parent.verticalCenter
+                }
+
+                color: Theme.highlightColor
+                //% "Date"
+                text: qsTrId("id-date")
+            }
+
+            Label {
+                anchors {
+                    left: selectLabel.right
+                    leftMargin: Theme.paddingLarge
+                    right: parent.right
+                    rightMargin: Theme.horizontalPageMargin
+                    verticalCenter: parent.verticalCenter
+                }
+
+                text: datetime.toLocaleDateString()
+            }
+
+            onClicked: {
+                var dialog = pageStack.push(pickerComponent, {
+                             date: datetime
+                })
+                dialog.accepted.connect(function() {
+                     datetime = dialog.date
+                })
+            }
         }
     }
 
-    onDone: {
-        if (result == DialogResult.Accepted) {
-            datetime = datePicker.date
-            repeat = repeatComboBox.currentIndex
-        }
+    Component {
+        id: pickerComponent
+        DatePickerDialog {}
     }
 }

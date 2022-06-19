@@ -30,6 +30,21 @@ void EventsModel::addEvent(const QString &title, const QDateTime &date, quint8 r
     emit changed();
 }
 
+bool EventsModel::updateEvent(int id, const QString &title, const QDateTime &date, quint8 repeat)
+{
+    const auto idx = index(id);
+    if (!idx.isValid()) {
+        return false;
+    }
+
+    m_events[id].title = title;
+    m_events[id].date = date;
+    m_events[id].repeat = repeat;
+    emit dataChanged(idx, idx);
+
+    return true;
+}
+
 void EventsModel::clear()
 {
     beginResetModel();
@@ -51,29 +66,30 @@ void EventsModel::removeEvent(int index)
 
 void EventsModel::refresh()
 {
-    for (auto &event : m_events) {
-        if (event.date > QDateTime::currentDateTime()) {
+    for (int i = 0; i < m_events.count(); i++) {
+        if (m_events[i].date > QDateTime::currentDateTime()) {
             continue;
         }
 
-        switch (event.repeat) {
+        switch (m_events[i].repeat) {
         case RepeatWeekly:
-            event.date = event.date.addDays(7);
+            m_events[i].date = m_events[i].date.addDays(7);
             break;
 
         case RepeatMonthly:
-            event.date = event.date.addMonths(1);
+            m_events[i].date = m_events[i].date.addMonths(1);
             break;
 
         case RepeatYearly:
-            event.date =event.date.addYears(1);
+            m_events[i].date = m_events[i].date.addYears(1);
             break;
 
         default:
-            break;
+            continue;
         }
+
+        emit dataChanged(index(i), index(i));
     }
-    emit dataChanged(index(0), index(m_events.count() - 1), QVector<int>() << RemainingRole << DateRole);
 }
 
 bool EventsModel::load()
@@ -189,32 +205,6 @@ QVariant EventsModel::data(const QModelIndex &index, int role) const
     default:
         return QVariant();
     }
-}
-
-bool EventsModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    if (!index.isValid()) {
-        return false;
-    }
-
-    switch (role) {
-    case TitleRole:
-        m_events[index.row()].title = value.toString();
-        break;
-
-    case DateRole:
-        m_events[index.row()].date = value.toDateTime();
-        break;
-
-    case RepeatRole:
-        m_events[index.row()].repeat = value.toUInt();
-
-    default:
-        return false;
-    }
-
-    emit dataChanged(index, index, QVector<int>() << role);
-    return true;
 }
 
 QHash<int, QByteArray> EventsModel::roleNames() const

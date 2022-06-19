@@ -164,7 +164,7 @@
     </message>
     <message id="id-monthly">
         <source>monthly</source>
-        <translation>monatlisch</translation>
+        <translation>monatlich</translation>
     </message>
     <message id="id-yearly">
         <source>yearly</source>

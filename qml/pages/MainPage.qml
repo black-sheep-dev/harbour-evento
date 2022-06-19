@@ -34,6 +34,7 @@ Page {
                     dialog.accepted.connect(function() {
                         Events.addEvent(dialog.title, dialog.datetime, dialog.repeat)
                         save()
+                        sortFilterModel.sortModel()
                     })
                 }
             }
@@ -58,6 +59,7 @@ Page {
                     onClicked: delegate.remorseAction(qsTrId("Deleting event"), function() {
                         Events.removeEvent(model.id)
                         save()
+                        sortFilterModel.sortModel()
                     })
                 }
                 MenuItem {
@@ -73,9 +75,8 @@ Page {
                                                     })
 
                         dialog.accepted.connect(function() {
-                            model.title = dialog.title
-                            model.date = dialog.datetime
-                            model.repeat = dialog.repeat
+                            Events.updateEvent(model.id, dialog.title, dialog.datetime, dialog.repeat)
+                            Events.refresh()
                             save()
                         })
                     }
@@ -200,5 +201,8 @@ Page {
         sortFilterModel.sortModel()
     }
 
-    onVisibleChanged: Events.refresh()
+    onVisibleChanged: {
+        Events.refresh()
+        sortFilterModel.sortModel()
+    }
 }

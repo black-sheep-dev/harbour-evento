@@ -38,6 +38,7 @@ public:
 
 public slots:
     void addEvent(const QString &title, const QDateTime &date, quint8 repeat = 0);
+    bool updateEvent(int id, const QString &title, const QDateTime &date, quint8 repeat = 0);
     void clear();
     void removeEvent(int index);
     void refresh();
@@ -57,7 +58,6 @@ private:
 public:
     int rowCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
-    bool setData(const QModelIndex &index, const QVariant &value, int role) override;
     QHash<int, QByteArray> roleNames() const override;
 };
 
