@@ -170,9 +170,5 @@
         <source>yearly</source>
         <translation>jährlich</translation>
     </message>
-    <message id="Deleting event">
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 </TS>
