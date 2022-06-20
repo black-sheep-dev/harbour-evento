@@ -88,7 +88,7 @@ void EventsModel::refresh()
             continue;
         }
 
-        emit dataChanged(index(i), index(i));
+        emit dataChanged(index(i), index(i), { RemainingRole });
     }
 }
 
