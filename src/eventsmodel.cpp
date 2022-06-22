@@ -100,7 +100,7 @@ void EventsModel::refresh()
             }
         }
 
-        if (roles.isEmpty()) {
+        if (!roles.isEmpty()) {
             emit dataChanged(index(i), index(i), roles);
         }
     }

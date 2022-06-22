@@ -1,3 +1,6 @@
+* Wed Jun 22 2022 Samuel Kron <blacksheep@nubecula.org> 0.2.1-1
+- Fixed events didn't update correctly
+
 * Sun Jun 19 2022 Samuel Kron <blacksheep@nubecula.org> 0.2.0-1
 - Add option for recurring events
 - Bugfixes
