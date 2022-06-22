@@ -72,37 +72,37 @@ void EventsModel::refresh()
     for (int i = 0; i < m_events.count(); i++) {
         QVector<int> roles;
 
-        switch (m_events[i].repeat) {
-        case RepeatWeekly:
-            m_events[i].date = m_events[i].date.addDays(7);
-            roles << DateRole;
-            break;
-
-        case RepeatMonthly:
-            m_events[i].date = m_events[i].date.addMonths(1);
-            roles << DateRole;
-            break;
-
-        case RepeatYearly:
-            m_events[i].date = m_events[i].date.addYears(1);
-            roles << DateRole;
-            break;
-
-        default:
-            break;
-        }
-
         const qint64 remaining = QDateTime::currentDateTime().daysTo(m_events[i].date);
         if (m_events[i].remaining != remaining) {
             m_events[i].remaining = remaining;
             roles << RemainingRole;
         }
 
-        if (roles.isEmpty()) {
-            continue;
+        if (m_events[i].repeat && m_events[i].remaining < 0) {
+            switch (m_events[i].repeat) {
+            case RepeatWeekly:
+                m_events[i].date = m_events[i].date.addDays(7);
+                roles << DateRole;
+                break;
+
+            case RepeatMonthly:
+                m_events[i].date = m_events[i].date.addMonths(1);
+                roles << DateRole;
+                break;
+
+            case RepeatYearly:
+                m_events[i].date = m_events[i].date.addYears(1);
+                roles << DateRole;
+                break;
+
+            default:
+                break;
+            }
         }
 
-        emit dataChanged(index(i), index(i), roles);
+        if (roles.isEmpty()) {
+            emit dataChanged(index(i), index(i), roles);
+        }
     }
 }
 
