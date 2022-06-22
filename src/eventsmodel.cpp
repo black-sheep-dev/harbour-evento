@@ -24,6 +24,8 @@ void EventsModel::addEvent(const QString &title, const QDateTime &date, quint8 r
     event.created = QDateTime::currentDateTime();
     event.repeat = repeat;
 
+    event.remaining = QDateTime::currentDateTime().daysTo(event.date);
+
     beginInsertRows(QModelIndex(), m_events.count(), m_events.count());
     m_events.append(event);
     endInsertRows();
@@ -39,6 +41,7 @@ bool EventsModel::updateEvent(int id, const QString &title, const QDateTime &dat
 
     m_events[id].title = title;
     m_events[id].date = date;
+    m_events[id].remaining = QDateTime::currentDateTime().daysTo(m_events[id].date);
     m_events[id].repeat = repeat;
     emit dataChanged(idx, idx);
 
@@ -67,28 +70,39 @@ void EventsModel::removeEvent(int index)
 void EventsModel::refresh()
 {
     for (int i = 0; i < m_events.count(); i++) {
-        if (m_events[i].date > QDateTime::currentDateTime()) {
-            continue;
-        }
+        QVector<int> roles;
 
         switch (m_events[i].repeat) {
         case RepeatWeekly:
             m_events[i].date = m_events[i].date.addDays(7);
+            roles << DateRole;
             break;
 
         case RepeatMonthly:
             m_events[i].date = m_events[i].date.addMonths(1);
+            roles << DateRole;
             break;
 
         case RepeatYearly:
             m_events[i].date = m_events[i].date.addYears(1);
+            roles << DateRole;
             break;
 
         default:
+            break;
+        }
+
+        const qint64 remaining = QDateTime::currentDateTime().daysTo(m_events[i].date);
+        if (m_events[i].remaining != remaining) {
+            m_events[i].remaining = remaining;
+            roles << RemainingRole;
+        }
+
+        if (roles.isEmpty()) {
             continue;
         }
 
-        emit dataChanged(index(i), index(i), { RemainingRole });
+        emit dataChanged(index(i), index(i), roles);
     }
 }
 
@@ -128,6 +142,8 @@ bool EventsModel::load()
         in >> event.title;
         in >> event.date;
         in >> event.created;
+
+        event.remaining = QDateTime::currentDateTime().daysTo(event.date);
 
         if (version > 1) {
             in >> event.repeat;
@@ -188,7 +204,7 @@ QVariant EventsModel::data(const QModelIndex &index, int role) const
         return event.title;
 
     case RemainingRole:
-        return QDateTime::currentDateTime().daysTo(event.date);
+        return event.remaining;
 
     case CreatedRole:
         return event.created;

@@ -9,6 +9,7 @@ struct Event {
     QDateTime created;
     QDateTime date;
     QString title;
+    qint64 remaining{0};
     quint8 repeat{0};
 };
 
