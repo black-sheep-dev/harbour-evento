@@ -149,7 +149,7 @@
 </message>
 <message id="id-never">
     <source>never</source>
-    <translation>jamais</translation>
+    <translation>Jamais</translation>
 </message>
 <message id="id-weekly">
     <source>weekly</source>
