@@ -1,3 +1,6 @@
+* Thu Jun 23 2022 Samuel Kron <blacksheep@nubecula.org> 0.2.3-1
+- Add French translation by lambda2501
+
 * Wed Jun 22 2022 Samuel Kron <blacksheep@nubecula.org> 0.2.1-1
 - Fixed events didn't update correctly
 
