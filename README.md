@@ -14,6 +14,7 @@ Available translations:
 
 - English
 - German
+- French (by lambda2501)
 
 If you missing your native language you are welcome to support this project with your translation.
 
