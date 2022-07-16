@@ -29,6 +29,14 @@ CoverBackground {
         onChanged: currentIndex = 0
     }
 
+    Timer {
+        interval: settings.coverSwitchInterval
+        repeat: true
+        running: settings.coverAutoSwitch && Events.rowCount() > 1
+
+        onTriggered: increment()
+    }
+
     Image {
         anchors.fill: parent
         height: sourceSize.height * width / sourceSize.width

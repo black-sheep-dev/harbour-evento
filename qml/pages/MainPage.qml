@@ -17,6 +17,12 @@ Page {
                 onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
             }
             MenuItem {
+                //% "Settings"
+                text: qsTrId("id-settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+
+            MenuItem {
                 //% "Sorting"
                 text: qsTrId("id-sorting")
                 onClicked: {

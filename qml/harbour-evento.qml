@@ -40,6 +40,8 @@ ApplicationWindow {
         path: "/apps/harbour-evento"
         synchronous: true
 
+        property bool coverAutoSwitch: false
+        property int coverSwitchInterval: 5000
         property int sortOrder: Qt.AscendingOrder
         property int sortRole: EventsModel.TitleRole
 

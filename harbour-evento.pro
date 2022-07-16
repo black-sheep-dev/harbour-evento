@@ -18,6 +18,7 @@ DISTFILES += qml/harbour-evento.qml \
     qml/dialogs/SortingDialog.qml \
     qml/pages/MainPage.qml \
     qml/pages/AboutPage.qml \
+    qml/pages/SettingsPage.qml \
     rpm/harbour-evento.changes \
     rpm/harbour-evento.changes.run.in \
     rpm/harbour-evento.spec \

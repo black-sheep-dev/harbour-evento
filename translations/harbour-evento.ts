@@ -174,5 +174,25 @@
         <source>yearly</source>
         <translation>yearly</translation>
     </message>
+    <message id="id-settings">
+        <source>Settings</source>
+        <translation>Settings</translation>
+    </message>
+    <message id="id-cover">
+        <source>Cover</source>
+        <translation>Cover</translation>
+    </message>
+    <message id="id-cover-auto-switch">
+        <source>Auto switch</source>
+        <translation>Auto switch</translation>
+    </message>
+    <message id="id-cover-auto-switch-desc">
+        <source>Turn on automatic switch between events on cover page in a defined interval</source>
+        <translation>Turn on automatic switch between events on cover page in a defined interval</translation>
+    </message>
+    <message id="id-cover-switch-interval-title">
+        <source>Interval (msec)</source>
+        <translation>Turn on automatic switch between events on cover page in a defined interval</translation>
+    </message>
 </context>
 </TS>
