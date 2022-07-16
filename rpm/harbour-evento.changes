@@ -1,3 +1,7 @@
+* Sat Jul 16 2022 Samuel Kron <blacksheep@nubecula.org> 0.3.0-1
+- Add option to auto switch between events on cover page in a defined interval
+- Add settings page
+
 * Thu Jun 23 2022 Samuel Kron <blacksheep@nubecula.org> 0.2.3-1
 - Add French translation by lambda2501
 

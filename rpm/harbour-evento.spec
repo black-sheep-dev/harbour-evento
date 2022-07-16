@@ -9,7 +9,7 @@ Name:       harbour-evento
 # << macros
 
 Summary:    Evento
-Version:    0.2.2
+Version:    0.3.0
 Release:    1
 Group:      Qt/Qt
 License:    GPLv2
