@@ -170,29 +170,5 @@
         <source>Sailfish OS app to count remaining days to defined events .</source>
         <translation>Application Sailfish OS pour compter les jours restants avant la fin d&apos;événements particuliers.</translation>
     </message>
-    <message id="id-settings">
-        <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="Deleting event">
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="id-cover">
-        <source>Cover</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="id-cover-auto-switch">
-        <source>Auto switch</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="id-cover-auto-switch-desc">
-        <source>Turn on automatic switch between events on cover page in a defined interval</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message id="id-cover-switch-interval-title">
-        <source>Interval (msec)</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 </TS>

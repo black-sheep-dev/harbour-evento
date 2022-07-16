@@ -174,10 +174,6 @@
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
-    <message id="Deleting event">
-        <source></source>
-        <translation type="unfinished"></translation>
-    </message>
     <message id="id-cover">
         <source>Cover</source>
         <translation>Cover</translation>
