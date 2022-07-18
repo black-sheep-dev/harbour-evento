@@ -180,7 +180,7 @@
     </message>
     <message id="id-cover-auto-switch">
         <source>Auto switch</source>
-        <translation type="unfinished">Automatischer Wechsel</translation>
+        <translation>Automatischer Wechsel</translation>
     </message>
     <message id="id-cover-auto-switch-desc">
         <source>Turn on automatic switch between events on cover page in a defined interval</source>
