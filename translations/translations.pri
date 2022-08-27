@@ -1,7 +1,8 @@
 TRANSLATIONS += \
     translations/harbour-evento.ts \
     translations/harbour-evento-de.ts \
-    translations/harbour-evento-fr.ts
+    translations/harbour-evento-fr.ts \
+    translations/harbour-evento-ru.ts
 
 
 qm.input    = TRANSLATIONS

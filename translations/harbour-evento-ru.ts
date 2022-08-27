@@ -2,8 +2,7 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ru">
 <context>
-    <name></name>
-</context>
+<name></name>
 <message id="id-edit-event">
     <source>Edit event</source>
     <translation>Изменить событие</translation>
@@ -187,4 +186,5 @@
     <source>Turn on automatic switch between events on cover page in a defined interval</source>
     <translation>Включите автопереключение событий на титульной странице с определенным интервалом</translation>
 </message>
+</context>
 </TS>
